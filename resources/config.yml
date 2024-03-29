@@ -33,9 +33,9 @@
 # ONLY FOR INTERNAL USE.
 config-version: 2
 
-# The ID:META of the key you want to use for opening crates.
+# The ID of the key you want to use for opening crates.
 # Its better not to edit this value unless you can edit the source code.
-key: "339:0"
+key: "PAPER"
 
 # The the description for the Key. Use \n for next line.
 lore: "Use this key at /warp crates.\nWin OP stuff."
