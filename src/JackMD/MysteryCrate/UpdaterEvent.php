@@ -93,8 +93,8 @@ class UpdaterEvent extends Task{
 	public function closeInventory(Player $player, BaseFakeInventory $inventory){
 		if((!is_null($this->getHandler())) && (!$this->getHandler()->isCancelled())){
 			$chestBlock = $this->chestBlock;
-			$typeBlock = $chestBlock->getWorld()->getBlock($chestBlock->subtract(0, 1));
-			$type = $this->plugin->isCrateBlock($typeBlock->getId(), $typeBlock->getDamage());
+			$typeBlock = $chestBlock->getPosition()->getWorld()->getBlock($chestBlock->getPosition()->asVector3()->subtract(0, 1, 0));
+			$type = $this->plugin->isCrateBlock($typeBlock->getTypeId());
 			$reward = $this->getReward();
 
 			if($player->isOnline()){
@@ -114,7 +114,7 @@ class UpdaterEvent extends Task{
 		if($item->getDamage() === $this->plugin->getConfig()->get("commandMeta")){
 			$nbt = $item->getNamedTag();
 			for($i = 0; $i < $this->plugin->getConfig()->get("maxCommands"); $i++){
-				if($nbt->hasTag((string) $i, StringTag::class)){
+				if($nbt->getTag((string) $i, StringTag::class)){
 					$cmd = $nbt->getString((string) $i);
 					$this->plugin->getServer()->dispatchCommand(new ConsoleCommandSender(), $cmd);
 				}
@@ -137,8 +137,8 @@ class UpdaterEvent extends Task{
 		$chestBlock = $this->chestBlock;
 		$player = $this->player;
 
-		$typeBlock = $chestBlock->getWorld()->getBlock($chestBlock->subtract(0, 1));
-		$type = $this->plugin->isCrateBlock($typeBlock->getId(), $typeBlock->getDamage());
+		$typeBlock = $chestBlock->getPosition()->getWorld()->getBlock($chestBlock->getPosition()->asVector3()->subtract(0, 1, 0));
+		$type = $this->plugin->isCrateBlock($typeBlock->getTypeId());
 		$drops = $this->plugin->getCrateDrops($type);
 
 		$reward = array_rand($drops, 1);
@@ -182,7 +182,7 @@ class UpdaterEvent extends Task{
 	/**
 	 * @param int $timer
 	 */
-	public function onRun(int $timer){
+	public function onRun(int $timer = -1): void{
 		$t_delay = $this->t_delay;
 		$chestBlock = $this->chestBlock;
 		$player = $this->player;
@@ -205,7 +205,7 @@ class UpdaterEvent extends Task{
 				$this->setItem(4, VanillaItems::END_ROD());
 				$this->setItem(22, VanillaItems::END_ROD());
 
-				$chestBlock->getWorld()->addSound(new ClickSound($chestBlock), [$player]);
+				$chestBlock->getPosition()->getWorld()->addSound(new ClickSound($chestBlock), [$player]);
 
 				$reward = $this->getReward();
 				$this->setItem(10, $crateInventory->getItem(11));
@@ -227,8 +227,8 @@ class UpdaterEvent extends Task{
 
 				$reward = $crateInventory->getItem(13);
 
-				$typeBlock = $chestBlock->getWorld()->getBlock($chestBlock->subtract(0, 1));
-				$type = $this->plugin->isCrateBlock($typeBlock->getId(), $typeBlock->getDamage());
+				$typeBlock = $chestBlock->getPosition()->getWorld()->getBlock($chestBlock->getPosition()->asVector3()->subtract(0, 1, 0));
+				$type = $this->plugin->isCrateBlock($typeBlock->getTypeId());
 
 				if($player->isOnline()){
 					$this->rewardPlayer($player, $reward, $type);
