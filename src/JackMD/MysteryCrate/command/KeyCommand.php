@@ -57,14 +57,6 @@ class KeyCommand extends Command{
     }
 
     /**
-     * @return Main
-     */
-    public final function getPlugin(): Main
-    {
-        return $this->plugin;
-    }
-
-    /**
      * @param CommandSender $sender
      * @param string        $commandLabel
      * @param array         $args
