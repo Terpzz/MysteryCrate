@@ -35,7 +35,7 @@ declare(strict_types=1);
 namespace JackMD\MysteryCrate\particle;
 
 use JackMD\MysteryCrate\Main;
-use pocketmine\level\particle\HappyVillagerParticle;
+use pocketmine\world\particle\HappyVillagerParticle;
 use pocketmine\math\Vector3;
 use pocketmine\scheduler\Task;
 
