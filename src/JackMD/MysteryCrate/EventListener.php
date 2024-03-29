@@ -212,7 +212,7 @@ class EventListener implements Listener{
 						$x = $cx + ($radius * cos($i));
 						$z = $cz + ($radius * sin($i));
 						$pos = new Vector3($x, $cy, $z);
-						$block->world->addParticle(new LavaParticle($pos));
+						$block->getPosition()->getWorld()->addParticle(new LavaParticle($pos));
 					}
 				}
 			}
