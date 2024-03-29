@@ -3,7 +3,7 @@ main: JackMD\MysteryCrate\Main
 api: [5.0.0]
 version: 10.0.0
 author: JackMD
-authors: [DaPigGuy, Terpz710]
+authors: [DaPigGuy, Terpz710, BlueGamesNetwork LLC]
 load: POSTWORLD
 description: Add unlimited number of MysteryCrates with full customization.
 website: https://github.com/Terpz710/MysteryCrate
