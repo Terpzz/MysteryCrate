@@ -13,5 +13,5 @@ projects:
       - src: muqsit/InvMenu/InvMenu
         version: ^4.6.5
       - src: JackMD/ConfigUpdater/ConfigUpdater
-        version: ^	2.1.0
+        version: ^2.1.0
 ...
