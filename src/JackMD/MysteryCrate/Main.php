@@ -148,7 +148,7 @@ class Main extends PluginBase{
 		if($this->getConfig()->get("showParticle")){
 			$crateWorld = (string) $this->getConfig()->get("crateWorld");
 			if(!$this->getServer()->getWorldManager()->isWorldLoaded($crateWorld)){
-				$this->getServer()->loadWorld($crateWorld);
+				$this->getServer()->getWorldManager()->loadWorld($crateWorld);
 			}
 			if($this->getServer()->getWorldManager()->getWorldByName($crateWorld) !== null){
 				$this->initParticleShow();
