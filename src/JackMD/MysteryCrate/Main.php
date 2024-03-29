@@ -325,7 +325,7 @@ class Main extends PluginBase {
 		$key->setLore([$this->getConfig()->get("lore")]);
 		$key->addEnchantment(new EnchantmentInstance(VanillaEnchantments::FORTUNE(), 3));
 		$key->setCustomName(ucfirst($type . " Key"));
-		$key->setNamedTag(new StringTag($type));
+		$key->setNamedTag()->setString(new StringTag($type));
 
 		$player->getInventory()->addItem($key);
 
