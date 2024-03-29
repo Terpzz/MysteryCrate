@@ -49,7 +49,7 @@ class KeyCommand extends Command{
      * @param Main $plugin
      */
     public function __construct(Main $plugin){
-        parent::__construct("key", $plugin);
+        parent::__construct("key");
         $this->setDescription("Give a crate key to a player.");
         $this->setUsage("/key [type] [player] [amount]");
         $this->setPermission("mc.command.key");
