@@ -6,7 +6,7 @@ author: JackMD
 authors: [DaPigGuy, Terpz710]
 load: POSTWORLD
 description: Add unlimited number of MysteryCrates with full customization.
-website: https://github.com/JackMD/MysteryCrate
+website: https://github.com/Terpz710/MysteryCrate
 
 permissions:
  mc.crates.use:
