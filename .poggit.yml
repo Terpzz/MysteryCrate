@@ -1,17 +1,17 @@
---- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/JackMD/MysteryCrate
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Terpz710/MysteryCrate
 branches:
 - master
 projects:
   MysteryCrate:
     path: ""
     lint:
-      phpstan: false
+      phpstan: true
     icon: meta/MysteryCrate.png
     libs:
       - src: JackMD/UpdateNotifier/UpdateNotifier
-        version: ^1.0.0
+        version: ^3.1.0
       - src: muqsit/InvMenu/InvMenu
-        version: ^2.0.0
+        version: ^4.6.5
       - src: JackMD/ConfigUpdater/ConfigUpdater
-        version: ^1.0.0
+        version: ^	2.1.0
 ...
