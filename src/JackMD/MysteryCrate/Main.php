@@ -54,7 +54,7 @@ use pocketmine\item\Item;
 use pocketmine\item\StringToItemParser;
 use pocketmine\world\particle\FloatingTextParticle;
 use pocketmine\math\Vector3;
-use pocketmine\nbt\tag\StringTag;
+use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
@@ -325,10 +325,10 @@ class Main extends PluginBase {
 		$key->setLore([$this->getConfig()->get("lore")]);
 		$key->addEnchantment(new EnchantmentInstance(VanillaEnchantments::FORTUNE(), 3));
 		$key->setCustomName(ucfirst($type . " Key"));
-		$key->setNamedTag("KeyType")->setString(new StringTag($type));
-
+		$tag = new CompoundTag();
+                $key->setNamedTag($tag);
+                $tag->setString("KeyType", $type);
 		$player->getInventory()->addItem($key);
-
 		return true;
 	}
 
