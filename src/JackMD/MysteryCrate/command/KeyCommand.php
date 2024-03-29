@@ -56,10 +56,11 @@ class KeyCommand extends Command{
     }
 
     /**
-     * @return Plugin|Main
+     * @return Main
      */
-    public function getPlugin(): Plugin{
-        return parent::getPlugin();
+    public final function getPlugin(): Main
+    {
+        return $this->plugin;
     }
 
     /**
