@@ -150,7 +150,7 @@ class UpdaterEvent extends Task{
 			$this->plugin->getServer()->getPluginManager()->disablePlugin($this->plugin);
 		}
 
-		$item = StringToItemParser::getInstance()->($reward["id"], $reward["amount"]);
+		$item = StringToItemParser::getInstance()->parse($reward["id"], $reward["amount"]);
 
 		if(isset($reward["name"])){
 			$item->setCustomName($reward["name"]);
