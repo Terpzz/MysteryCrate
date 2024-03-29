@@ -51,10 +51,10 @@ use muqsit\invmenu\InvMenuHandler;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
-use pocketmine\level\particle\FloatingTextParticle;
+use pocketmine\world\particle\FloatingTextParticle;
 use pocketmine\math\Vector3;
 use pocketmine\nbt\tag\StringTag;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
@@ -146,10 +146,10 @@ class Main extends PluginBase{
 	private function initParticles(): void{
 		if($this->getConfig()->get("showParticle")){
 			$crateWorld = (string) $this->getConfig()->get("crateWorld");
-			if(!$this->getServer()->isLevelLoaded($crateWorld)){
-				$this->getServer()->loadLevel($crateWorld);
+			if(!$this->getServer()->getWorldManager()->isWorldLoaded($crateWorld)){
+				$this->getServer()->loadWorld($crateWorld);
 			}
-			if($this->getServer()->getLevelByName($crateWorld) !== null){
+			if($this->getServer()->getWorldManager()->getWorldByName($crateWorld) !== null){
 				$this->initParticleShow();
 			}else{
 				$this->getServer()->getLogger()->critical("Please set the crateWorld in the config.yml. Or make sure that the world exists and is loaded.");
@@ -274,11 +274,10 @@ class Main extends PluginBase{
 
 	/**
 	 * @param int $id
-	 * @param int $meta
 	 * @return bool|string
 	 */
-	public function isCrateBlock(int $id, int $meta){
-		return isset($this->crateBlocks[$id . ":" . $meta]) ? $this->crateBlocks[$id . ":" . $meta] : false;
+	public function isCrateBlock(int $id){
+		return isset($this->crateBlocks[$id]) ? $this->crateBlocks[$id] : false;
 	}
 
 	/**
@@ -286,9 +285,9 @@ class Main extends PluginBase{
 	 * @return bool|string
 	 */
 	public function isCrateKey(Item $item){
-		$values = explode(":", $this->getConfig()->getNested("key"));
+		$values = ($this->getConfig()->getNested("key"));
 
-		return ((int) $values[0] === $item->getId()) && ((int) $values[1] === $item->getDamage()) && (!is_null($keyType = $item->getNamedTagEntry("KeyType"))) ? $keyType->getValue() : false;
+		return ((int) $values === $item->getTypeId()) && (!is_null($keyType = $item->getNamedTagEntry("KeyType"))) ? $keyType->getValue() : false;
 	}
 
 	/**
@@ -320,12 +319,12 @@ class Main extends PluginBase{
 
 		$keyID = (string) $this->getConfig()->get("key");
 
-		$key = Item::fromString($keyID);
+		$key = StringToItemParser::getInstance()->parse($keyID);
 		$key->setCount($amount);
 		$key->setLore([$this->getConfig()->get("lore")]);
-		$key->addEnchantment(new EnchantmentInstance(new Enchantment(255, "", Enchantment::RARITY_COMMON, Enchantment::SLOT_ALL, Enchantment::SLOT_NONE, 1)));
+		$key->addEnchantment(new EnchantmentInstance(VanillaEnchantments::FORTUNE(), 3);
 		$key->setCustomName(ucfirst($type . " Key"));
-		$key->setNamedTagEntry(new StringTag("KeyType", $type));
+		$key->setNamedTag(new StringTag("KeyType", $type));
 
 		$player->getInventory()->addItem($key);
 
