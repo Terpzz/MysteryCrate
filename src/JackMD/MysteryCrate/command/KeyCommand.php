@@ -43,6 +43,9 @@ use pocketmine\utils\TextFormat;
 
 class KeyCommand extends Command{
 
+    /** @var Main */
+    private $plugin;
+
     /**
      * KeyCommand constructor.
      *
