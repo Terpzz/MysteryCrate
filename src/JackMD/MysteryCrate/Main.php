@@ -91,7 +91,7 @@ class Main extends PluginBase{
 		$this->initCrates();
 		$this->checkConfigs();
 
-		UpdateNotifier::checkUpdate($this, $this->getDescription()->getName(), $this->getDescription()->getVersion());
+		UpdateNotifier::checkUpdate($this->getDescription()->getName(), $this->getDescription()->getVersion());
 	}
 
 	/**
