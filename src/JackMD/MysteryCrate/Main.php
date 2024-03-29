@@ -60,7 +60,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 
-class Main extends PluginBase{
+class Main extends PluginBase {
 
 	/** @var int */
 	private const CRATES_VERSION = 1;
