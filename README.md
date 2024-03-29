@@ -18,7 +18,8 @@
  - The entire plugin is suited for [PocketMine-MP](https://github.com/pmmp/PocketMine-MP) latest API.
 ### How to setup?
 ***-------OUTDATED-------***
- - For adding enchants that are not registered by PocketMine-MP you may use **[VanillaEnchantments](https://github.com/TheAz928/VanillaEnchantments)** by [@TheAz928](https://github.com/TheAz928) or **[TeaSpoon](https://github.com/CortexPE/TeaSpoon)** by [@CortexPE](https://github.com/CortexPE) for adding enchants on the items.
+ - For adding enchants that are not registered by PocketMine-MP you may use **[VanillaEnchantments](https://github.com/TheAz928/VanillaEnchantments)** by [@TheAz928](https://github.com/TheAz928) or **[TeaSpoon](https://github.com/CortexPE/TeaSpoon)** by [@CortexPE](https://github.com/CortexPE)
+for adding enchants on the items
 ***-------OUTDATED-------***
  - Additionally you can also add **CustomEnchants** to the items. For this you require **[PiggyCustomEnchants](https://github.com/DaPigGuy/PiggyCustomEnchants)** by [@DaPigGuy](https://github.com/DaPigGuy).
  - Get the [.phar](https://poggit.pmmp.io/ci/JackMD/MysteryCrate/MysteryCrate) and drop the into your `plugins` folder.
