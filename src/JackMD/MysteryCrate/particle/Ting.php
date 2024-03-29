@@ -61,7 +61,7 @@ class Ting extends Task{
 	 * @param int $tick
 	 */
 	public function onRun(int $tick){
-		$level = $this->plugin->getServer()->getLevelByName((string) $this->plugin->getConfig()->get("crateWorld"));
+		$level = $this->plugin->getServer()->getWorldManager()->getWorldByName((string) $this->plugin->getConfig()->get("crateWorld"));
 		$cpos = $this->pos;
         $time = 0;
         $pi = 3.14159;
