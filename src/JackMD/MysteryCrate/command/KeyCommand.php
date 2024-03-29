@@ -53,6 +53,7 @@ class KeyCommand extends Command{
         $this->setDescription("Give a crate key to a player.");
         $this->setUsage("/key [type] [player] [amount]");
         $this->setPermission("mc.command.key");
+        $this->plugin = $plugin;
     }
 
     /**
@@ -99,7 +100,7 @@ class KeyCommand extends Command{
     private function checkArgs(array $args, CommandSender $sender): bool{
         if(!isset($args[0])){
             $sender->sendMessage(TextFormat::RED . "Usage: /key [type] [player] [amount]");
-        }elseif(!$this->getPlugin()->getCrateType(strtolower($args[0]))){
+        }elseif(!$this->plugin->getCrateType(strtolower($args[0]))){
             $sender->sendMessage(TextFormat::RED . "Invalid crate type.");
         }else{
             return false;
