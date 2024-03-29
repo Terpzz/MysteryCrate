@@ -122,7 +122,7 @@ class EventListener implements Listener{
 	 */
 	public function onPlace(BlockPlaceEvent $event){
 		$player = $event->getPlayer();
-		$block = $event->getBlock();
+		$block = $event->getBlockAgainst();
 		$level = $this->plugin->getServer()->getWorldManager()->getWorldByName((string) $this->plugin->getConfig()->get("crateWorld"));
 		if(!($player->hasPermission("mc.crates.create"))){
 			if($this->plugin->isCrateBlock($block->getTypeId())){
